@@ -1,0 +1,53 @@
+<div class="portfolio-modal modal fade" id="arcade" tabindex="-1" role="dialog" aria-labelledby="portfolioModal1Label" aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+          <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">
+                <i class="fas fa-times"></i>
+              </span>
+            </button>
+            <div class="modal-body text-center">
+              <div class="container">
+                <div class="row justify-content-center">
+                  <div class="col-lg-8">
+                    <!-- Portfolio Modal - Title -->
+                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Custom Arcade Machine</h2>
+                    <!-- Icon Divider -->
+                    <div class="divider-custom">
+                      <div class="divider-custom-line" style="max-width:45rem"></div>
+                    </div>
+                    <!-- Portfolio Modal - Image -->
+                    <img class="img-fluid rounded mb-5" src="{{.Path}}img/arcade.png" alt="">
+                    <!-- Portfolio Modal - Text -->
+                    <h4 class="portfolio-modal-title text-secondary text-uppercase mb-0" style="font-size:2rem">2016</h4>
+    
+                    <p class="mb-5" align="left">
+                        At the start of high school I began the construction of a custom arcade machine.
+                        Over the course of about a year I built the frame, installed the controls and display,
+                        soldered the GPIO connections and setup the operating system. The system uses the RetroPie operating system
+                        installed on a Raspberry Pi 1 Model B. The <a href="https://www.adafruit.com/product/480">Joystick</a> and <a href="https://www.adafruit.com/product/471">Buttons</a> are from <a href="https://www.adafruit.com">Adafruit.com</a>
+                        The display is a cheap TV screen I purchased from a local TV store.
+                        <br>
+                        The development of this arcade machine was incredibly difficult at the time but a fantastic experience.
+                        When I built this arcade machine in the early years of my High School, the Raspberry Pi community was not as expansive
+                        as it is today. The biggest struggle which took months to solve was that implementing multiplayer control in the RetroPie operating system
+                        was not as plug and play as it is today. I had to spend many nights messing with the source code, configuration files and GPIO setups
+                        to get the system to actually work with two joysticks and two sets of buttons at the same time.
+                        <br><br>
+                        Shown below is a picture of the internals of the system and the running machine.
+                        <img class="img-fluid rounded mb-5" src="{{.Path}}img/modal_images/arcade_running.jpg" alt="">
+                        <img class="img-fluid rounded mb-5" src="{{.Path}}img/modal_images/arcade_internals.jpg" alt="">
+
+                    </p>
+                    <button class="btn btn-primary" href="#" data-dismiss="modal">
+                      <i class="fas fa-times fa-fw"></i>
+                      Close Window
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
