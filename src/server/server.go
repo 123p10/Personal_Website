@@ -119,6 +119,9 @@ func LoadServer() {
 	http.HandleFunc("/view/", makeArticleHandler(viewHandler))
 	http.HandleFunc("/edit/", makeArticleHandler(editHandler))
 	http.HandleFunc("/save/", makeArticleHandler(saveHandler))
-
-	log.Fatal(http.ListenAndServe(":80", nil))
+	if os.Getenv("PRODUCTION") != "TRUE" {
+		log.Fatal(http.ListenAndServe(":8080", nil))
+	} else {
+		log.Fatal(http.ListenAndServe(":80", nil))
+	}
 }
