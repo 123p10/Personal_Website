@@ -120,5 +120,5 @@ func LoadServer() {
 	http.HandleFunc("/edit/", makeArticleHandler(editHandler))
 	http.HandleFunc("/save/", makeArticleHandler(saveHandler))
 
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	log.Fatal(http.ListenAndServe(":80", nil))
 }
