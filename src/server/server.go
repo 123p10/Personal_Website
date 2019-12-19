@@ -113,8 +113,11 @@ func getModalTemplate(templateString string) string {
 
 func LoadServer() {
 	cacheTemplates()
-	fs := http.FileServer(http.Dir(os.Getenv("STATIC")))
-	http.Handle("/static/", http.StripPrefix("/static/", fs))
+	static_fs := http.FileServer(http.Dir(os.Getenv("STATIC")))
+	http.Handle("/static/", http.StripPrefix("/static/", static_fs))
+	root_fs := http.FileServer(http.Dir(os.Getenv("ROOT_PATH")))
+	http.Handle("/sitemap.xml", root_fs)
+
 	http.HandleFunc("/", frontPage)
 	http.HandleFunc("/view/", makeArticleHandler(viewHandler))
 	http.HandleFunc("/edit/", makeArticleHandler(editHandler))
