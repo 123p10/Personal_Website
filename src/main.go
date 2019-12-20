@@ -11,5 +11,5 @@ func main() {
 	if os.Getenv("PRODUCTION") != "TRUE" {
 		config.LoadEnv()
 	}
-	server.LoadServer()
+	server.RunServer()
 }

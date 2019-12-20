@@ -1,6 +1,7 @@
 package server
 
 import (
+	"crypto/tls"
 	"errors"
 	"io/ioutil"
 	"log"
@@ -11,6 +12,7 @@ import (
 	"text/template"
 
 	"github.com/Personal_Website/src/pages"
+	"golang.org/x/crypto/acme/autocert"
 )
 
 var templates *template.Template
@@ -111,20 +113,62 @@ func getModalTemplate(templateString string) string {
 	return bodyStr
 }
 
-func LoadServer() {
+func handleRoutes(mux *http.ServeMux) {
 	cacheTemplates()
-	static_fs := http.FileServer(http.Dir(os.Getenv("STATIC")))
-	http.Handle("/static/", http.StripPrefix("/static/", static_fs))
-	root_fs := http.FileServer(http.Dir(os.Getenv("ROOT_PATH")))
-	http.Handle("/sitemap.xml", root_fs)
+	staticFs := http.FileServer(http.Dir(os.Getenv("STATIC")))
+	mux.Handle("/static/", http.StripPrefix("/static/", staticFs))
+	rootFs := http.FileServer(http.Dir(os.Getenv("ROOT_PATH")))
+	mux.Handle("/sitemap.xml", rootFs)
+	mux.HandleFunc("/", frontPage)
+	/*mux.HandleFunc("/view/", makeArticleHandler(viewHandler))
+	mux.HandleFunc("/edit/", makeArticleHandler(editHandler))
+	mux.HandleFunc("/save/", makeArticleHandler(saveHandler))*/
+}
 
-	http.HandleFunc("/", frontPage)
-	http.HandleFunc("/view/", makeArticleHandler(viewHandler))
-	http.HandleFunc("/edit/", makeArticleHandler(editHandler))
-	http.HandleFunc("/save/", makeArticleHandler(saveHandler))
-	if os.Getenv("PRODUCTION") != "TRUE" {
-		log.Fatal(http.ListenAndServe(":8080", nil))
+func loadProductionEnvironment(server *http.Server, certManager *autocert.Manager) {
+	go http.ListenAndServe(":80", certManager.HTTPHandler(nil))
+	server.ListenAndServeTLS("", "")
+}
+func loadDevEnvironment(server *http.Server) {
+	err := server.ListenAndServe()
+	if err != nil {
+		log.Fatal("ListenAndServe Error: ", err)
+	}
+}
+
+func loadMux() *http.ServeMux {
+	mux := http.NewServeMux()
+	return mux
+}
+func loadServer(mux *http.ServeMux, https bool, port string) (*http.Server, *autocert.Manager) {
+	port = ":" + port
+	if https == true {
+		certManager := autocert.Manager{
+			Prompt: autocert.AcceptTOS,
+			Cache:  autocert.DirCache("certs"),
+		}
+		return &http.Server{
+			Addr:    port,
+			Handler: mux,
+			TLSConfig: &tls.Config{
+				GetCertificate: certManager.GetCertificate,
+			},
+		}, &certManager
+	}
+	return &http.Server{
+		Addr:    port,
+		Handler: mux,
+	}, &autocert.Manager{}
+}
+
+func RunServer() {
+	mux := loadMux()
+	handleRoutes(mux)
+	if os.Getenv("PRODUCTION") == "TRUE" {
+		server, certManager := loadServer(mux, true, "443")
+		loadProductionEnvironment(server, certManager)
 	} else {
-		log.Fatal(http.ListenAndServe(":80", nil))
+		server, _ := loadServer(mux, false, "8080")
+		loadDevEnvironment(server)
 	}
 }
