@@ -86,6 +86,7 @@ func frontPage(w http.ResponseWriter, r *http.Request) {
 	t, _ := template.ParseFiles(os.Getenv("PAGES_PATH") + "/frontPage/index.html")
 	templateVars := map[string]interface{}{
 		"Groupdesk":    getModalTemplate("groupdesk"),
+		"isidore":      getModalTemplate("isidore"),
 		"FSAE":         getModalTemplate("FSAE"),
 		"The6ix":       getModalTemplate("the6ix"),
 		"pchacks":      getModalTemplate("pchacks"),

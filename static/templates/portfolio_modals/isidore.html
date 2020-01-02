@@ -1,0 +1,65 @@
+<div class="portfolio-modal modal fade" id="isidore" tabindex="-1" role="dialog" aria-labelledby="portfolioModal1Label" aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+          <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">
+                <i class="fas fa-times"></i>
+              </span>
+            </button>
+            <div class="modal-body text-center">
+              <div class="container">
+                <div class="row justify-content-center">
+                  <div class="col-lg-8">
+                    <!-- Portfolio Modal - Title -->
+                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Isidore</h2>
+                    <!-- Icon Divider -->
+                    <div class="divider-custom">
+                      <div class="divider-custom-line" style="max-width:45rem"></div>
+                    </div>
+                    <!-- Portfolio Modal - Image -->
+                    <img class="img-fluid rounded mb-5" src="{{.Path}}img/modal_images/isidore.png" alt="">
+                    <!-- Portfolio Modal - Text -->
+                    <h4 class="portfolio-modal-title text-secondary text-uppercase mb-0" style="font-size:2rem">December 2019 - Present</h4>
+                    <h4 class="portfolio-modal-title text-secondary text-uppercase mb-0" style="font-size:1.5rem"><a href="https://github.com/123p10/isidore">Isidore Github</a></h4>
+
+                    <p align="left" class="mb-5">
+                      I started the Isidore project during the Winter break of 2019.
+                      The project is currently in very early development but it supports many modern language constructs and can run incredibly complex programs.
+                      <br><br>
+                      I built my own <a href="https://en.wikipedia.org/wiki/Lexical_analysis">lexer</a>, <a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">AST Tree</a> builder and <a href="https://en.wikipedia.org/wiki/Just-in-time_compilation">JIT compiler</a> using <a href="https://llvm.org/">LLVM in </a> in C++<br><br>
+                      I started this project to solve some of the common issues I have experienced in new and old programming languages. 
+                      <br><br>
+                      Isidore's current primary goal is to produce readable, maintainable code. The modern programmer values performance and memory efficiency in languages when the priority should be in readibility.
+                      As a team member on a project it should not take me more than 3 reads of your function to interpret what and how it performs its operations. 
+                      Many will solve this issue by commenting inside their function, nearly every line. This just results in more clutter, comments should be used only for incredibly complex operations and for quick summaries of functions(so I don't have to read your code).
+                      <br><br>
+                      I love the features of the new popular languages like Python and Golang(this website is built in it) but certain language constructs can result in messy, confusing code. 
+                      Python's lack of curly braces for functions can result in unreadable code, as a programmer it is important to easily identify where loops and blocks begin and end. 
+                      Golang and Python both lack semicolons which I view as another sin of the new set of languages.
+                      The semicolon defines the end of a statement, it is not difficult for the compiler to infer the end of statements(isidore used to do this) but the semicolon is not for the compiler it is for the reader.
+                      The semicolon acts like the period in sentences, I can understand your sentence without a period, it may look prettier without that period but it becomes easier to understand your message when you explicitly define the end of a statement.
+                      <br><br>
+                      I also love the features of more classic languages like C++(what isidore is written in) and C but I also feel certain "features" hinder it's use.
+                      One of the features I hate is when accessing more than one value from a function requires me to pass by reference a variable into the parameters. 
+                      This is disgusting. Parameters is data passed into a function and for primitive types should not be pass by reference.
+                      Any primitive values I desire from the function should be outputted as returns(like in Golang).
+                      There are also incredibly confusing and annoying constructs like the vector.
+                      The vector is a critically important feature but it uses pretentious, unreadable wording.
+                      push_back() is the standard method for appending a value to a list a ridiculous name for such a common feature, could be named append() or insert_end().
+                      There may be important reasons for naming vector the way it is but the vector is simply a dynamic array and could have a much simpler, easier name.
+                      <br><br>
+                      Documentation for the project is currently poor but hopefully in the future on the github link above there will be a features list and plan for isidore.
+                      <br>
+                    </p>
+                    <button class="btn btn-primary" href="#" data-dismiss="modal">
+                      <i class="fas fa-times fa-fw"></i>
+                      Close Window
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    

@@ -50,7 +50,7 @@
   </nav>
 
   <!-- Masthead -->
-  <header class="masthead bg-primary text-white text-center">
+  <header style="background-color: #5b8ecf;" class="masthead text-white text-center">
     <div class="container d-flex align-items-center flex-column">
 
       <!-- Masthead Avatar Image -->
@@ -63,9 +63,39 @@
 
     </div>
   </header>
+  <section class="page-section bg-primary text-white mb-0" id="about">
+    <div class="container">
+
+      <!-- About Section Heading -->
+      <h2 class="page-section-heading text-center text-uppercase text-white">About Me</h2>
+
+      <!-- Icon Divider -->
+      <div class="divider-custom divider-light">
+        <div style="max-width:15rem" class="divider-custom-line"></div>
+      </div>
+
+      <!-- About Section Content -->
+      <div class="row">
+        <div class="col-lg-4 ml-auto">
+          <p class="lead" align="left">
+            I am a Waterloo Mechatronics Engineering Student currently in my 1B term.
+            I am currently pursuing a co-op job for the Summer of 2020. My current project is Isidore as shown below. You can view my experience and projects by clicking on the icons below.
+            My resume can be found <u><a href="{{.ExtPath}}resume.pdf" style="color:white">here</a></u>
+          </p>
+        </div>
+        <div class="col-lg-4 mr-auto">
+          <p class="lead">
+            When I am not working on school work or personal projects I enjoy long distance running, rock climbing and motorcyle enduro riding.
+          </p>
+        </div>
+      </div>
+
+
+    </div>
+  </section>
 
   <!-- Portfolio Section -->
-  <section class="page-section portfolio" id="workexperience">
+<section class="page-section portfolio" id="workexperience">
     <div class = "container">
         <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Work Experience</h2>
         <br>
@@ -139,6 +169,18 @@
     <div class = "container">
       <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Projects</h2>
       <br>
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-6 col-lg-4">
+            <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#isidore">
+              <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                <div class="portfolio-item-caption-content text-center text-white">
+                  <i class="fas fa-plus fa-3x"></i>
+                </div>
+              </div>
+              <img class="img-fluid rounded" src="{{.Path}}img/isidore.png" alt="">
+            </div>
+          </div>
+      </div>
       <div class="row">
         <div class="col-md-6 col-lg-4">
             <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#lego_printer">
@@ -212,36 +254,6 @@
   
 
   <!-- About Section -->
-  <section class="page-section bg-primary text-white mb-0" id="about">
-    <div class="container">
-
-      <!-- About Section Heading -->
-      <h2 class="page-section-heading text-center text-uppercase text-white">About Me</h2>
-
-      <!-- Icon Divider -->
-      <div class="divider-custom divider-light">
-        <div style="max-width:15rem" class="divider-custom-line"></div>
-      </div>
-
-      <!-- About Section Content -->
-      <div class="row">
-        <div class="col-lg-4 ml-auto">
-          <p class="lead" align="left">
-            I am a Waterloo Mechatronics Engineering Student currently in my 1B term.
-            I am currently pursuing a co-op job for the Summer of 2020. You can view my personal projects by clicking on the icons above.
-            My resume can be found <u><a href="{{.ExtPath}}resume.pdf" style="color:white">here</a></u>
-          </p>
-        </div>
-        <div class="col-lg-4 mr-auto">
-          <p class="lead">
-            When I am not working on school work or personal projects I enjoy long distance running, rock climbing and motorcyle enduro riding.
-          </p>
-        </div>
-      </div>
-
-
-    </div>
-  </section>
 
 
   <!-- Footer -->
@@ -267,6 +279,9 @@
           <a class="btn btn-outline-light btn-social mx-1" href="mailto:obrake@edu.uwaterloo.ca">
             <i class="fas fa-fw fa-envelope-open-text"></i>
           </a>
+          <a class="btn btn-outline-light btn-social mx-1" href="https://www.strava.com/athletes/44011831">
+            <i class="fab fa-strava"></i>
+          </a>
         </div>
 
       </div>
@@ -287,46 +302,6 @@
     </a>
   </div>
 
-  <!-- Portfolio Modals -->
-
-  <!-- Portfolio Modal 1 -->
-  <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-labelledby="portfolioModal1Label" aria-hidden="true">
-    <div class="modal-dialog modal-xl" role="document">
-      <div class="modal-content">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">
-            <i class="fas fa-times"></i>
-          </span>
-        </button>
-        <div class="modal-body text-center">
-          <div class="container">
-            <div class="row justify-content-center">
-              <div class="col-lg-8">
-                <!-- Portfolio Modal - Title -->
-                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Log Cabin</h2>
-                <!-- Icon Divider -->
-                <div class="divider-custom">
-                  <div class="divider-custom-line"></div>
-                  <div class="divider-custom-icon">
-                    <i class="fas fa-star"></i>
-                  </div>
-                  <div class="divider-custom-line"></div>
-                </div>
-                <!-- Portfolio Modal - Image -->
-                <img class="img-fluid rounded mb-5" src="img/portfolio/cabin.png" alt="">
-                <!-- Portfolio Modal - Text -->
-                <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-                <button class="btn btn-primary" href="#" data-dismiss="modal">
-                  <i class="fas fa-times fa-fw"></i>
-                  Close Window
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 {{.Groupdesk}}  
 
 {{.FSAE}}
@@ -334,6 +309,7 @@
 {{.pchacks}}
 {{.warriors}}
 
+{{.isidore}}
 {{.lego_printer}}
 {{.gokart}}
 {{.eve}}
