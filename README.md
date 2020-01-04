@@ -12,3 +12,4 @@ Kill Server
 
 Note
 non go files, HTMl can be pushed without killing/restarting server
+go_dir is /var/go_dir
