@@ -14,14 +14,13 @@
   <link href="{{.Path}}vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-
   <!-- Theme CSS -->
   <link href="{{.Path}}css/freelancer.min.css" rel="stylesheet">
 
 </head>
 
 <body id="page-top">
-
+  
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
     <div class="container">
@@ -316,6 +315,7 @@
 {{.sudoku}}
 {{.compEng}}
 {{.arcade}}
+
 <!-- Bootstrap core JavaScript -->
   <script src="{{.Path}}vendor/jquery/jquery.min.js"></script>
   <script src="{{.Path}}vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -329,7 +329,14 @@
 
   <!-- Custom scripts for this template -->
   <script src="{{.Path}}js/freelancer.min.js"></script>
-
+  <script>
+   // jQuery('#the6ix').modal();
+   var url = $(location).attr('href'),
+    parts = url.split("/"),
+    last_part = parts[parts.length-1];
+    jQuery('#' + last_part).modal();
+    </script>
+    
 </body>
 
 </html>
