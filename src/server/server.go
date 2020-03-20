@@ -19,6 +19,10 @@ var templates *template.Template
 
 var validPath = regexp.MustCompile("^/(edit|save|view)/([a-zA-Z0-9]+)$")
 
+type Message struct {
+	code string `json:"code"`
+}
+
 func makeArticleHandler(fn func(http.ResponseWriter, *http.Request, string)) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		m := validPath.FindStringSubmatch(r.URL.Path)
@@ -102,6 +106,19 @@ func frontPage(w http.ResponseWriter, r *http.Request) {
 	}
 	t.Execute(w, templateVars)
 }
+func compilerPage(w http.ResponseWriter, r *http.Request) {
+	t, _ := template.ParseFiles(os.Getenv("PAGES_PATH") + "/compilerPage/index.html")
+	templateVars := map[string]interface{}{
+		"codemirror": "/static/codemirror/",
+	}
+	t.Execute(w, templateVars)
+}
+func runCompiler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	r.ParseForm()
+	log.Print(r.Form["code"])
+}
+
 func getModalTemplate(templateString string) string {
 	body, err := ioutil.ReadFile(os.Getenv("TEMPLATES_PATH") + "portfolio_modals/" + templateString + ".html")
 	if err != nil {
@@ -121,6 +138,8 @@ func handleRoutes(mux *http.ServeMux) {
 	rootFs := http.FileServer(http.Dir(os.Getenv("ROOT_PATH")))
 	mux.Handle("/sitemap.xml", rootFs)
 	mux.HandleFunc("/", frontPage)
+	mux.HandleFunc("/compiler", compilerPage)
+	mux.HandleFunc("/compiler/run", runCompiler)
 	/*mux.HandleFunc("/view/", makeArticleHandler(viewHandler))
 	mux.HandleFunc("/edit/", makeArticleHandler(editHandler))
 	mux.HandleFunc("/save/", makeArticleHandler(saveHandler))*/

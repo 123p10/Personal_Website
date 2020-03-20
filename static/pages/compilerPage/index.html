@@ -1,0 +1,39 @@
+<script src="{{.codemirror}}/lib/codemirror.js"></script>
+<link rel="stylesheet" href="{{.codemirror}}lib/codemirror.css">
+<link rel="stylesheet" href="{{.codemirror}}theme/base16-dark.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script src="{{.codemirror}}mode/javascript/javascript.js"></script>
+<script src="{{.codemirror}}addon/edit/closebrackets.js"></script>
+<script src="{{.codemirror}}addon/selection/active-line.js"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+
+<textarea id="codeInput"></textarea>
+<html></html><body></body></html>
+<style>
+    .CodeMirror {border: 1px solid black; font-size:13px}
+  </style>
+<button id="runCode" type="button" class="btn btn-primary">Run Code</button>
+<script>
+    myCodeMirror = {}
+    window.onload = function(){
+        myCodeMirror = CodeMirror.fromTextArea(document.getElementById("codeInput"),{
+            lineNumbers:true,
+            styleActiveLine: true,
+            matchBrackets: true,
+            theme: "base16-dark"
+        });
+
+    }
+    $("#runCode").click(function(){
+        $.post("compiler/run",
+        {
+            code: myCodeMirror.getValue()
+        },
+        function(data, status){
+            alert("Data: " + data + "\nStatus: " + status);
+        });
+    }); 
+    </script>
