@@ -3,10 +3,12 @@ package server
 import (
 	"crypto/tls"
 	"errors"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
+	"os/exec"
 	"regexp"
 	"strings"
 	"text/template"
@@ -117,6 +119,8 @@ func runCompiler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	r.ParseForm()
 	log.Print(r.Form["code"])
+	cmd, _ := exec.Command("/bin/sh", "/var/isidore/isidore/git_pull.sh").Output()
+	fmt.Println(cmd)
 }
 
 func getModalTemplate(templateString string) string {
